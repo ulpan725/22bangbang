@@ -147,7 +147,7 @@ void loop()
 float volt_to_distance(unsigned int a_value) {
   // Replace below line with the equation obtained from nonlinear regression analysis
   //return (6762.0 / (a_value - 9) - 4.0) * 10.0;
-  return 553+-2.11*a_value+3.18*pow(10,-3)*pow(a_value,2)+-1.84*pow(10,-6)*pow(a_value,3);
+  return 473+-2.11*a_value+3.18*pow(10,-3)*pow(a_value,2)+-1.84*pow(10,-6)*pow(a_value,3);
 }
 
 float big_distance_to_accurate(float dist){
