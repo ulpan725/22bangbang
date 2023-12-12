@@ -15,11 +15,11 @@
                           // Setting EMA to 1 effectively disables EMA filter.
 
 // Servo adjustment - Set _DUTY_MAX, _NEU, _MIN with your own numbers
-#define _DUTY_MAX 2500 // 2000
-#define _DUTY_NEU 1500 // 1500
-#define _DUTY_MIN 500 // 1000
+#define _DUTY_MAX 2700 // 2000
+#define _DUTY_NEU 1330 // 1500
+#define _DUTY_MIN 800 // 1000
 
-#define _SERVO_ANGLE_DIFF  178 // Replace with |D - E| degree
+#define _SERVO_ANGLE_DIFF  100 // Replace with |D - E| degree
 #define _SERVO_SPEED       50  // servo speed
 
 #define _BANGBANG_RANGE    400  // duty up and down for bangbang control
@@ -150,21 +150,6 @@ float volt_to_distance(unsigned int a_value) {
   return 473+-2.11*a_value+3.18*pow(10,-3)*pow(a_value,2)+-1.84*pow(10,-6)*pow(a_value,3);
 }
 
-float big_distance_to_accurate(float dist){
-  //this works well for distance above 114mm
-  dist = (int) 100*dist;
-  return 31.5+-6.19*pow(10,-3)*dist+2.26*pow(10,-6)*pow(dist,2)+-1.15*pow(10,-10)*pow(dist,3)+1.92*pow(10,-15)*pow(dist,4);
-}
-
-float small_distance_to_accurate(float dist){
-  //this works well for distance below 114mm
-  dist = (int) 100*dist;
-  return -47.5+0.0479*dist+-9.91*pow(10,-6)*pow(dist,2)+1.13*pow(10,-9)*pow(dist,3)+-6.14*pow(10,-14)*pow(dist,4)+1.57*pow(10,-18)*pow(dist,5)+-1.52*pow(10,-23)*pow(dist,6);
-}
-
-int compare(const void *a, const void *b) {
-  return (*(unsigned int *)a - *(unsigned int *)b);
-}
 
 unsigned int ir_sensor_filtered(unsigned int n, float position, int verbose)
 {
